@@ -8,7 +8,7 @@ const ChefRecommends = () => {
         <section>
             <SectionTitle heading="CHEF RECOMMENDS" subHeading="Should Try"></SectionTitle>
         </section>
-        <div className="flex mx-auto gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto gap-3">
         <ChefCard></ChefCard> 
         <ChefCard></ChefCard>
         <ChefCard></ChefCard>
