@@ -20,7 +20,9 @@ const ChefCard = ({item}) => {
           <h2 className="card-title">{name}</h2>
           <p>{recipe}</p>
           <div className="card-actions">
-            <button className="btn btn-primary uppercase hover:bg-black hover:text-orange-500">Add to cart</button>
+          <button className="uppercase btn btn-outline mt-5  text-white border-0 border-b-4 border-b-black hover:bg-black hover:text-white">
+          Add to card
+        </button>
           </div>
         </div>
       </div>
