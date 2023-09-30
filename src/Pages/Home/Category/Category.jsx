@@ -37,15 +37,15 @@ const Category = () => {
         </SwiperSlide>
         <SwiperSlide>
         <img src={slide2} alt="" />
-        <h3 className='text-3xl text-center text-white uppercase -mt-20'>soups</h3>
+        <h3 className='text-3xl text-center text-white uppercase -mt-20'>soup</h3>
         </SwiperSlide>
         <SwiperSlide>
         <img src={slide3} alt="" />
-        <h3 className='text-3xl text-center text-white uppercase -mt-20'>pizzas</h3>
+        <h3 className='text-3xl text-center text-white uppercase -mt-20'>pizza</h3>
         </SwiperSlide>
         <SwiperSlide>
         <img src={slide4} alt="" />
-        <h3 className='text-3xl text-center text-white uppercase -mt-20'>desserts</h3>
+        <h3 className='text-3xl text-center text-white uppercase -mt-20'>dessert</h3>
         </SwiperSlide>
         <SwiperSlide>
         <img src={slide5} alt="" />
