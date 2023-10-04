@@ -9,6 +9,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const Login = () => {
   const [disabled, setDisabled] = useState(true);
@@ -124,9 +125,7 @@ const Login = () => {
                 </p>
                 <p>Or sign in with</p>
                 <div className="mt-4">
-                  <button className="btn btn-outline btn-circle">f</button>
-                  <button className="btn btn-outline btn-circle mx-4">G</button>
-                  <button className="btn btn-outline btn-circle">GH</button>
+                  <SocialLogin></SocialLogin>
                 </div>
               </div>
             </form>
