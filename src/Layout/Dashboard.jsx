@@ -4,12 +4,14 @@ import { FiCalendar, FiMenu, FiShoppingBag } from "react-icons/fi";
 import { AiOutlineContacts } from "react-icons/ai";
 import { MdReviews } from "react-icons/md";
 import useCart from "../hooks/useCart";
+import useAdmin from '../hooks/useAdmin'
 
 const Dashboard = () => {
   const [cart] = useCart();
 
   //TODO: load data from the server to have dynamic isAdmin based on Data
-  const isAdmin = true;
+  // const isAdmin = true;
+  const [isAdmin] = useAdmin()
 
 
 
