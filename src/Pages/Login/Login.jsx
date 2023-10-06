@@ -89,7 +89,7 @@ const Login = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="password"
+                  type="text"
                   name="password"
                   placeholder="Enter your password"
                   className="input input-bordered"
@@ -109,9 +109,10 @@ const Login = () => {
                 />
               </div>
               <div className="form-control mt-6">
+                {/* TODO: login button disabled */}
                 <input
                   className="btn btn-primary"
-                  disabled={disabled}
+                  disabled={false}
                   type="submit"
                   value="Login"
                 />
