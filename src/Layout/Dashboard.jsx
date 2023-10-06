@@ -56,7 +56,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li className="uppercase">
-                <NavLink to="/dashboard/payment">
+                <NavLink to="/dashboard/manageitems">
                   <FaBars className="text-2xl" /> Manage Items
                 </NavLink>
               </li>

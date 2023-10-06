@@ -1,15 +1,64 @@
 import { useForm } from "react-hook-form";
 
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
+const img_hosting_token = import.meta.env.VITE_Image_Upload_token;
 const AddItem = () => {
+  const [axiosSecure] = useAxiosSecure()
+  const navigate = useNavigate()
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm();
+
+  const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
+
   const onSubmit = (data) => {
-    console.log(data)
+    const formData = new FormData();
+    formData.append("image", data.image[0]);
+
+    fetch(img_hosting_url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((imgResponse) => {
+        console.log(imgResponse);
+        if (imgResponse.success) {
+          const imgURL = imgResponse.data.display_url;
+          const { name, price, category, recipe } = data;
+          const newItem = {
+            name,
+            price: parseFloat(price),
+            category,
+            recipe,
+            image: imgURL,
+          };
+          console.log(newItem);
+
+          axiosSecure.post('/menu', newItem)
+          .then(data =>{
+            console.log('after posting new menu item', data.data);
+            if(data.data.insertedId){
+              reset()
+              Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Item added successfully!',
+                showConfirmButton: false,
+                timer: 1500
+              })
+              navigate('/menu')
+            }
+          })
+        }
+      });
   };
   console.log(errors);
 
@@ -21,7 +70,7 @@ const AddItem = () => {
       ></SectionTitle>
 
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="form-control w-full max-w-xs">
+        <div className="form-control w-full ">
           <label className="label">
             <span className="label-text font-semibold">Recipe name*</span>
           </label>
@@ -36,17 +85,14 @@ const AddItem = () => {
         <div className="flex gap-x-10 my-5">
           <div className="form-control w-full max-w-xs">
             <label className="label">
-              <span className="label-text font-semibold">
-                Category*
-              </span>
+              <span className="label-text font-semibold">Category*</span>
             </label>
             <select
+              defaultValue="Pick one"
               {...register("category", { required: true })}
               className="select select-bordered"
             >
-              <option disabled selected>
-                Pick one
-              </option>
+              <option disabled>Pick one</option>
               <option>Salad</option>
               <option>Pizza</option>
               <option>Soup</option>
@@ -63,11 +109,7 @@ const AddItem = () => {
               type="text"
               placeholder="Price here"
               className="input input-bordered w-full max-w-xs"
-              {...register("price", {
-                required: true,
-                minLength: 6,
-                maxLength: 12,
-              })}
+              {...register("price", { required: true })}
             />
           </div>
         </div>
