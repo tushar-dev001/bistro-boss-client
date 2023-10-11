@@ -15,6 +15,7 @@ import AddItem from "../Pages/Dashboard/AddItem/AddItem";
 import AdminRoute from "./AdminRoute";
 import ManageItems from "../Pages/Dashboard/ManageItems/ManageItems";
 import Payment from "../Pages/Dashboard/Payment/Payment";
+import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 
 export const router = createBrowserRouter([
   {
@@ -60,13 +61,18 @@ export const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "mycart",
-        element: <MyCart></MyCart>,
+        path: 'adminhome',
+        element: <AdminHome></AdminHome>
       },
       {
         path: "userhome",
         element: <UserHome></UserHome>,
       },
+      {
+        path: "mycart",
+        element: <MyCart></MyCart>,
+      },
+      
       {
         path: 'payment',
         element: <Payment></Payment>
